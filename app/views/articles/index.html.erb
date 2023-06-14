@@ -1,0 +1,38 @@
+<div style="padding: 35px; display: flex; justify-content: center;">
+  <div style="width: 100%; max-width: 800px;">
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 10px;">
+      <h1 style="text-align: center; color: #333;">Articles Listing Page</h1>
+      <%= button_to 'Create New Article', new_article_path, method: :get, style: 'padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer;' %>
+      <%= button_to 'Edit Password', edit_password_path, method: :get, style: 'padding: 10px 15px; background-color: #FF9800; color: white; border: none; cursor: pointer;' %>
+      <%= button_to 'Logout', logout_path, method: :delete, style: 'padding: 10px 15px; background-color: #F44336; color: white; border: none; cursor: pointer;' %>
+    </div>
+    <div>
+      <table style="width: 100%; table-layout: fixed;">
+        <thead>
+          <tr>
+            <th style="text-align: center; padding: 15px;">Title</th>
+            <th style="text-align: center; padding: 15px;">Description</th>
+            <th style="text-align: center; padding: 15px;">Author Email ID</th>
+            <th style="text-align: center; padding: 15px;" colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td style="text-align: center; padding: 15px;"><%= article.title %></td>
+              <td style="text-align: center; padding: 15px;"><%= article.description %></td>
+              <td style="text-align: center; padding: 15px;"><%= User.find_by(id: article.user_id).email %></td>
+              <td><%= button_to 'Show', article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #2196F3; color: white; border: none; cursor: pointer;' %></td>
+              <% if Current.user && article.user_id == Current.user.id %>
+                <td><%= button_to 'Edit', edit_article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #FFC107; color: white; border: none; cursor: pointer;' %></td>
+                <td><%= button_to 'Delete', article_path(article), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, style: 'padding: 5px 10px; background-color: #F44336; color: white; border: none; cursor: pointer;' %></td>
+              <% else %>
+                <td colspan="2" style="text-align: left; padding: 15px;">Not authorized for edit or delete</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

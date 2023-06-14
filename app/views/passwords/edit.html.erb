@@ -1,0 +1,19 @@
+<div style="padding: 35px; display: flex; justify-content: center;">
+  <div style="width: 100%; max-width: 400px;">
+    <h1 style="text-align: center; color: #333;">Edit Password</h1>
+    <%= form_with model: Current.user, url: edit_password_path do |f| %>
+      <div style="margin-bottom: 15px;">
+        <%= f.label 'Password:', style: 'display: block;' %>
+        <%= f.password_field :password, style: 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;' %>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <%= f.label 'Confirm Password:', style: 'display: block;' %>
+        <%= f.password_field :password_confirmation, style: 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;' %>
+      </div>
+      <div style="text-align: center;display:flex;flex-direction:row; gap: 20px;">
+        <%= button_to "Back to articles", articles_path, method: :get, style: 'padding: 10px 15px; background-color: #2196F3; color: white; border: none; cursor: pointer;' %>
+        <%= f.submit 'Update', style: 'padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer;' %>
+      </div>
+    <% end %>
+  </div>
+</div>

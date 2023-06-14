@@ -1,0 +1,36 @@
+<div style="padding: 35px; display: flex; justify-content: center;">
+    <div style="display: flex; flex-direction:column">
+      <h1>Edit Article</h1>
+      <div>
+          <% if @article.errors.any? %>
+              <p style="color: red;">There are errors:</p>
+              <ul>
+                  <% @article.errors.full_messages.each do |message| %>
+                      <li style="color: red;"><%= message %></li>
+                  <% end %>
+              </ul>
+              <% end %>
+      </div>
+      <div style="border: 2px solid black;padding: 20px">
+        <%= form_with model: @article ,local: true, data: { turbo: 'false' } do |form|  %>
+          <p>
+            <%= form.label :title %> <br/>
+            <%= form.text_field :title %>
+            <% if @article.errors.has_key?(:title) %>
+              <p style="color: red;">Title <%= @article.errors[:title].first %></p>
+            <% end %>
+          </p>
+          <p>
+            <%= form.label :description %> <br/>
+            <%= form.text_area :description %>
+            <% if @article.errors.has_key?(:description) %>
+              <p style="color: red;">Description <%= @article.errors[:description].first %></p>
+            <% end %>
+          </p>
+          <p>
+            <%= form.submit %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>

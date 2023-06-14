@@ -1,0 +1,44 @@
+<div style="padding: 35px; display: flex; justify-content: center;">
+  <div style="display: flex; flex-direction: column; max-width: 600px; width: 100%;">
+
+    <h1 style="text-align: center; color: #333;">Create a New Article</h1>
+
+    <div>
+      <% if @article.errors.any? %>
+        <p style="color: red; margin-bottom: 10px;">There are errors:</p>
+        <ul style="color: red; margin-bottom: 10px;">
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div style="border: 2px solid black; padding: 20px; background-color: #f5f5f5;width: 100%">
+      <%= form_with scope: :article, url: articles_path, local: true, data: { turbo: 'false' } do |form|  %>
+        <p>
+          <%= form.label :title, style: 'margin-bottom: 5px; font-weight: bold;' %> <br/>
+          <%= form.text_field :title, style: 'padding: 5px; width: 98%;' %>
+          <% if @article.errors.has_key?(:title) %>
+            <p style="color: red; margin: 5px 0 0 0;"><%= @article.errors[:title].first %></p>
+          <% end %>
+        </p>
+        <p>
+          <%= form.label :description, style: 'margin-bottom: 5px; font-weight: bold;' %> <br/>
+          <%= form.text_area :description, style: 'padding: 5px; width: 98%; height: 100px;' %>
+          <% if @article.errors.has_key?(:description) %>
+            <p style="color: red; margin: 5px 0 0 0;"><%= @article.errors[:description].first %></p>
+          <% end %>
+        </p>
+        <p style="visibility: hidden;">
+          <%= form.number_field :user_id , value:Current.user.id%>
+        </p>
+        <p>
+          <%= form.submit 'Create', style: 'padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer;' %>
+        </p>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
