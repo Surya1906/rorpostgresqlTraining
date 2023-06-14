@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-  end 
+  end
 
   def create
     @article = Article.new(article_params)
@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
   def correct_user
     @article = Article.find(params[:id])
     unless Current.user.id == @article.user_id
-      redirect_to root_path, notice: 'Not authorized to do this action'
+      redirect_to articles_path, notice: 'Not authorized to do this action'
     end
   end
 
