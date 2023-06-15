@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   def index
     if Current.user
       @articles = Article.all
+      flash[:notice] = "Welcome #{Current.user.email}" if (Time.now - Current.user.created_at) <= 24 * 60 * 60
     else
       redirect_to root_path
     end
