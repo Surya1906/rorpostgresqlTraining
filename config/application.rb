@@ -18,5 +18,11 @@ module RorpostgreTraining
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    # Permitted locales available for the application
+    config.i18n.available_locales = %i[en de tn]
+    # Set default locale to something other than :en
+    config.i18n.default_locale = :en
   end
 end

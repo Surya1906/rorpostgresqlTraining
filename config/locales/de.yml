@@ -1,0 +1,17 @@
+de:
+  articles:
+    index:
+      articles_listing_page: "Artikellistenseite"
+      create_new_article: "Neuen Artikel erstellen"
+      edit_password: "Passwort bearbeiten"
+      logout: "Ausloggen"
+      title: "Titel"
+      description: "Beschreibung"
+      author_email_id: "E-Mail-ID des Autors"
+      action: "Aktion"
+      show: 'Zeigen'
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      are_you_sure: "Bist du dir sicher?"
+      not_authorized_for_edit_or_delete: "Keine Berechtigung zum Bearbeiten oder Löschen"
+

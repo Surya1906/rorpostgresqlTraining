@@ -1,19 +1,19 @@
 <div style="padding: 35px; display: flex; justify-content: center;">
   <div style="width: 100%; max-width: 800px;">
     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 10px;">
-      <h1 style="text-align: center; color: #333;">Articles Listing Page</h1>
-      <%= button_to 'Create New Article', new_article_path, method: :get, style: 'padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer;' %>
-      <%= button_to 'Edit Password', edit_password_path, method: :get, style: 'padding: 10px 15px; background-color: #FF9800; color: white; border: none; cursor: pointer;' %>
-      <%= button_to 'Logout', logout_path, method: :delete, style: 'padding: 10px 15px; background-color: #F44336; color: white; border: none; cursor: pointer;' %>
+      <h1 style="text-align: center; color: #333;"><%= t(".articles_listing_page") %></h1>
+      <%= button_to t(".create_new_article"), new_article_path, method: :get, style: 'padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer;' %>
+      <%= button_to t(".edit_password"), edit_password_path, method: :get, style: 'padding: 10px 15px; background-color: #FF9800; color: white; border: none; cursor: pointer;' %>
+      <%= button_to t(".logout"), logout_path, method: :delete, style: 'padding: 10px 15px; background-color: #F44336; color: white; border: none; cursor: pointer;' %>
     </div>
     <div>
       <table style="width: 100%; table-layout: fixed;">
         <thead>
           <tr>
-            <th style="text-align: center; padding: 15px;">Title</th>
-            <th style="text-align: center; padding: 15px;">Description</th>
-            <th style="text-align: center; padding: 15px;">Author Email ID</th>
-            <th style="text-align: center; padding: 15px;" colspan="2">Action</th>
+            <th style="text-align: center; padding: 15px;"><%= t(".title") %></th>
+            <th style="text-align: center; padding: 15px;"><%= t(".description") %></th>
+            <th style="text-align: center; padding: 15px;"><%= t(".author_email_id") %></th>
+            <th style="text-align: center; padding: 15px;" colspan="2"><%= t(".action") %></th>
           </tr>
         </thead>
         <tbody>
@@ -22,12 +22,12 @@
               <td style="text-align: center; padding: 15px;"><%= article.title %></td>
               <td style="text-align: center; padding: 15px;"><%= article.description %></td>
               <td style="text-align: center; padding: 15px;"><%= User.find_by(id: article.user_id).email %></td>
-              <td><%= button_to 'Show', article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #2196F3; color: white; border: none; cursor: pointer;' %></td>
+              <td><%= button_to t(".show"), article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #2196F3; color: white; border: none; cursor: pointer;' %></td>
               <% if Current.user && article.user_id == Current.user.id %>
-                <td><%= button_to 'Edit', edit_article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #FFC107; color: white; border: none; cursor: pointer;' %></td>
-                <td><%= button_to 'Delete', article_path(article), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, style: 'padding: 5px 10px; background-color: #F44336; color: white; border: none; cursor: pointer;' %></td>
+                <td><%= button_to t(".edit"), edit_article_path(article), method: :get, style: 'padding: 5px 10px; background-color: #FFC107; color: white; border: none; cursor: pointer;' %></td>
+                <td><%= button_to t(".delete"), article_path(article), method: :delete, data: { turbo_method: :delete, turbo_confirm: t(".are_you_sure") }, style: 'padding: 5px 10px; background-color: #F44336; color: white; border: none; cursor: pointer;' %></td>
               <% else %>
-                <td colspan="2" style="text-align: left; padding: 15px;">Not authorized for edit or delete</td>
+                <td colspan="2" style="text-align: left; padding: 15px;"><%= t(".not_authorized_for_edit_or_delete") %></td>
               <% end %>
             </tr>
           <% end %>

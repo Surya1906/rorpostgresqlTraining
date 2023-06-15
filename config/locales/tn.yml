@@ -1,0 +1,17 @@
+tn:
+  articles:
+    index:
+      articles_listing_page: "கட்டுரைகள் பட்டியல் பக்கம்"
+      create_new_article: "புதிய கட்டுரையை உருவாக்கவும்"
+      edit_password: "கடவுச்சொல்லை திருத்தவும்"
+      logout: "வெளியேறு"
+      title: "தலைப்பு"
+      description: "விளக்கம்"
+      author_email_id: "மின்னஞ்சல் ஐடி ஆட்டோர்ஸ்"
+      action: "நடவடிக்கை"
+      show: 'காட்டு'
+      edit: "தொகு"
+      delete: "அணைக்க"
+      are_you_sure: "நீ சொல்வது உறுதியா?"
+      not_authorized_for_edit_or_delete: "திருத்தவோ நீக்கவோ அனுமதி இல்லை"
+
